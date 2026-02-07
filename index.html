@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalnex.in — Redirecting to Spider Web</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { overflow: hidden; height: 100vh; font-family: 'Segoe UI', -apple-system, sans-serif; }
+
+/* Full-screen iframe showing kalnex.in */
+#kalnex-frame {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  border: none; z-index: 1;
+}
+
+/* Overlay banner at top */
+#redirect-banner {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a0a20 100%);
+  border-bottom: 2px solid #e74c3c;
+  padding: 12px 24px;
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+.banner-logo {
+  font-size: 18px; font-weight: 700; color: #e74c3c;
+  letter-spacing: 2px;
+}
+
+.banner-message {
+  font-size: 13px; color: #aaa;
+}
+
+.banner-countdown {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.countdown-number {
+  font-size: 24px; font-weight: 700; color: #fff;
+  background: rgba(231, 76, 60, 0.2);
+  border: 1px solid #e74c3c;
+  border-radius: 6px;
+  padding: 4px 12px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.countdown-label {
+  font-size: 11px; color: #666;
+}
+
+.banner-bar {
+  width: 150px; height: 6px; background: #1a1a3e; border-radius: 3px; overflow: hidden;
+}
+
+.banner-bar-fill {
+  height: 100%; width: 0%; background: linear-gradient(90deg, #e74c3c, #c0392b);
+  border-radius: 3px; transition: width 1s linear;
+}
+
+.banner-target {
+  font-size: 12px; color: #888;
+}
+
+.banner-target a {
+  color: #e74c3c; text-decoration: none; font-weight: 600;
+}
+
+.banner-skip {
+  background: transparent; border: 1px solid #333; color: #888;
+  padding: 6px 14px; border-radius: 4px; font-size: 11px; cursor: pointer;
+  transition: all 0.2s;
+}
+
+.banner-skip:hover {
+  border-color: #e74c3c; color: #fff;
+}
+
+/* Loading state before iframe loads */
+#loading {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  z-index: 500; color: #666; font-size: 14px;
+}
+</style>
+</head>
+<body>
+
+<div id="loading">Loading kalnex.in...</div>
+
+<iframe id="kalnex-frame" src="https://www.kalnex.in" onload="document.getElementById('loading').style.display='none'"></iframe>
+
+<div id="redirect-banner">
+  <div class="banner-logo">KALNEX</div>
+  <div class="banner-message">You're viewing kalnex.in</div>
+  <div class="banner-countdown">
+    <div class="countdown-number" id="countdown">10</div>
+    <div class="countdown-label">seconds</div>
+  </div>
+  <div class="banner-bar"><div class="banner-bar-fill" id="bar-fill"></div></div>
+  <div class="banner-target">then → <a href="network.html">Spider Web</a></div>
+  <button class="banner-skip" onclick="window.location.href='network.html'">Skip Now →</button>
+</div>
+
+<script>
+(function() {
+  var seconds = 10;
+  var targetUrl = 'network.html';
+
+  function updateCountdown() {
+    var countdownEl = document.getElementById('countdown');
+    var barEl = document.getElementById('bar-fill');
+
+    if (countdownEl) countdownEl.textContent = seconds;
+    if (barEl) barEl.style.width = ((10 - seconds) / 10 * 100) + '%';
+
+    if (seconds <= 0) {
+      window.location.href = targetUrl;
+    } else {
+      seconds--;
+      setTimeout(updateCountdown, 1000);
+    }
+  }
+
+  // Start countdown
+  setTimeout(updateCountdown, 500);
+})();
+</script>
+</body>
+</html>
