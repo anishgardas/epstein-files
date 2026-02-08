@@ -972,8 +972,10 @@ const network = new vis.Network(container, { nodes, edges }, {
   physics: {
     enabled: true,
     solver: 'forceAtlas2Based',
-    forceAtlas2Based: { gravitationalConstant: -50, centralGravity: 0.005, springLength: 150, springConstant: 0.03, damping: 0.3 },
-    stabilization: false
+    forceAtlas2Based: { gravitationalConstant: -50, centralGravity: 0.005, springLength: 150, springConstant: 0.02, damping: 0.1 },
+    stabilization: false,
+    minVelocity: 0.1,
+    maxVelocity: 30
   },
   interaction: { hover: true, tooltipDelay: 100, zoomView: true, dragView: true, multiselect: true },
   nodes: { borderWidth: 2 },
@@ -2271,6 +2273,18 @@ function toggleMobileSidebar() {
 // ============================================================
 document.getElementById('stat-nodes').textContent = rawNodes.length;
 document.getElementById('stat-edges').textContent = rawEdges.length;
+
+// Keep graph moving - add gentle random motion
+setInterval(() => {
+  if (document.getElementById('toggle-physics').checked) {
+    const nodeIds = nodes.getIds();
+    const randomNode = nodeIds[Math.floor(Math.random() * nodeIds.length)];
+    const pos = network.getPositions([randomNode])[randomNode];
+    if (pos) {
+      network.moveNode(randomNode, pos.x + (Math.random() - 0.5) * 5, pos.y + (Math.random() - 0.5) * 5);
+    }
+  }
+}, 2000);
 </script>
 </body>
 </html>
