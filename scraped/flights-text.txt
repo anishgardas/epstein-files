@@ -1,0 +1,264 @@
+menu
+search
+help_outline
+settings
+Jemini
+info
+NEW 2/2/2026: Volume 11 of the DOJ's 1 million document drop is now in Jmail. Browse·About·Donate
+close
+home
+Home
+PASSENGERS
+JEFFREY EPSTEIN
+person
+IGOR ZINOVIEV
+person
+LANCE CALLOWAY
+GHISLAINE MAXWELL
+person
+DAVID MULLEN
+person
+LOUELLA
+person
+JEAN LUC BRUNEL
+ALLEN DEUTSCH
+person
+NEIL GERSHENFELD
+person
+DARREN INDYKE
+person
+KEVIN MAXWELL
+WOODY ALLEN
+person
+REID HOFFMAN
+person
+J.P MOLYNEUX
+person
+JOE PAGANO
+Flight History
+
+These are Jeffrey Epstein's real flights, extracted from flight logs scanned and sent through his email.
+
+flight
+4,292
+flights
+schedule
+10,343h
+flight time
+people
+3,302
+passengers
+All Years
+2019
+2018
+2017
+2016
+2015
+2014
+2013
+2012
+2011
+2010
+2009
+2008
+2007
+2006
+2005
+2004
+2003
+2002
+2001
+2000
+All Aircraft
+AA
+Delta
+F-GXRK
+N064KE
+N120JE
+N212JE
+N222JE
+N241E
+N331JE
+N415LM
+N432HF
+N4616W
+N4916M
+N491GM
+N4936M
+N595E
+N650CB
+N692TA
+N709TA
+N712TA
+N718TA
+N720TA
+N722JE
+N751TA
+N7660S
+N76812
+N783JS
+N9086M
+N908GM
+N908JC
+N908JE
+N909JE
+USAir
+United
+UnitedAir
+All Flights
+Just Jeffrey
+With Guests
+Empty Legs
+star
+Nov 30, 2014
+N908JE
+STT
+Cyril E. King Airport
+St. Thomas, USVI, US Virgin Islands
+flight
+3h 35m
+BOS
+Boston Logan International Airport
+Boston, MA, USA
+JE
+JEFFREY EPSTEIN
+IJ
+ITO JOI
+AM
+ANDREAS MACHL
+RH
+REID HOFFMAN
+sticky_note_2
+Crew: LV DR
+description
+HOUSE_OVERSIGHT_008115
+star
+Mar 21, 2013
+N909JE
+TEB
+Teterboro Airport
+Teterboro, NJ, USA
+flight
+7h 7m
+LFPB
+Paris–Le Bourget Airport
+Paris, France
+JE
+JEFFREY EPSTEIN
+WA
+WOODY ALLEN
+MA
+MRS ALLEN
+[F
+[ANONYMOUS FEMALE]
+description
+HOUSE_OVERSIGHT_006286
+star
+Mar 1, 2013
+N909JE
+TEB
+Teterboro Airport
+Teterboro, NJ, USA
+flight
+2h 24m
+PBT
+Palm Beach County Park Airport
+Lantana, FL, USA
+JE
+JEFFREY EPSTEIN
+BG
+BILL GATES
+sticky_note_2
+Crew: Larry Visoski, David Rodgers III
+description
+HOUSE_OVERSIGHT_006289
+star
+Feb 16, 2013
+N909JE
+TCB
+Treasure Cay Airport
+Treasure Cay, Bahamas
+flight
+48m
+PBI
+Palm Beach International Airport
+West Palm Beach, FL, USA
+JE
+JEFFREY EPSTEIN
+LS
+LARRY SUMMERS
+WA
+WOODY ALLEN
+MA
+MRS. ALLEN
+sticky_note_2
+Crew: Larry Visoski, David Rodgers
+description
+HOUSE_OVERSIGHT_006294
+star
+Apr 15, 2012
+N909JE
+TEB
+Teterboro Airport
+Teterboro, NJ, USA
+flight
+49m
+BED
+Hanscom Field
+Bedford, MA, USA
+JE
+JEFFREY EPSTEIN
+LB
+LEON BLACK
+sticky_note_2
+Crew: Larry Visoski David Rodgers (NM)
+description
+HOUSE_OVERSIGHT_006335
+star
+Dec 14, 2007
+N909JE
+TEB
+Teterboro Airport
+Teterboro, NJ, USA
+flight
+2h 30m
+MIA
+Miami International Airport
+Miami, FL, USA
+JE
+JEFFREY EPSTEIN
+AD
+ALAN DERSHOWITZ
+MW
+MARTY WEINBERG
+IZ
+IGOR ZINOVIEV
+description
+HOUSE_OVERSIGHT_005644
+Jemini
+view_sidebar
+arrow_drop_down
+add
+open_in_full
+restart_alt
+delete_forever
+close
+What's on your mind, Jeffrey?
+subdirectory_arrow_right
+What can I help you find, Jeffrey?
+tune
+arrow_upward
+Jemini in Workspace can make mistakes, so double-check responses. Learn more
+Jmail
+JPhotos
+JDrive
+JFlights
+More
+1
+JVR
+Jamazon
+Jemini
+Jotify
+New
+JMessage
+Jacebook
