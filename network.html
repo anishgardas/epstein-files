@@ -809,6 +809,7 @@ const rawNodes = [
   {id:"diana_ross",label:"Diana Ross",group:"celebrity",w:15,desc:"Singer. Named in Lolita Express flight logs.",emails:0,imsg:0,source:"flight_logs",loc:"NYC",era:["pre_conviction"]},
   {id:"michael_jackson",label:"Michael Jackson",group:"celebrity",w:10,desc:"Singer (deceased). Multiple phone numbers in black book.",emails:0,imsg:0,source:"black_book",loc:"Los Angeles",era:["pre_conviction"]},
   {id:"david_blaine",label:"David Blaine",group:"celebrity",w:20,desc:"Magician.",emails:0,imsg:0,source:"flight_logs",loc:"NYC",era:["rebuilding"]},
+  {id:"peter_thiel",label:"Peter Thiel",group:"tech",w:35,desc:"PayPal founder.",emails:0,imsg:0,source:"court_docs",loc:"CA",era:["rebuilding"]},
 ];
 
 // EDGE DATA — 108 edges
@@ -947,6 +948,7 @@ const rawEdges = [
   {s:"martin_nowak",t:"bob_berwick",w:20,tip:"Same flight Sep 4 2015 with Epstein and Andy Knoll. Doc: HOUSE_OVERSIGHT_001880.",src:"flight_logs"},
   {s:"bob_berwick",t:"noam_chomsky",w:15,tip:"MIT colleagues. Berwick co-authored 'Why Only Us' with Chomsky. Both connected to Epstein.",src:"public_records"},
   {s:"jeffrey_epstein",t:"david_blaine",w:25,tip:"Flight Sep 2012",src:"flight_logs"},
+  {s:"peter_thiel",t:"jeffrey_epstein",w:40,tip:"$40M investment",src:"court_docs"},
 ];
 
 
