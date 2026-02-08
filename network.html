@@ -233,18 +233,20 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
 .email-page-btn:hover { border-color: #666; color: #fff; }
 .email-page-btn.active { border-color: #e74c3c; color: #fff; background: rgba(231,76,60,0.2); }
 
-/* Mobile menu button - hidden on desktop */
+/* Mobile menu button - hidden on desktop, shown on mobile */
 #mobile-menu-btn {
   display: none;
-  background: transparent;
-  border: 1px solid #333;
+  background: #e74c3c;
+  border: none;
   color: #fff;
-  padding: 6px 10px;
-  border-radius: 4px;
+  padding: 8px 12px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
 }
-#mobile-menu-btn:hover { border-color: #e74c3c; }
+#mobile-menu-btn:active { background: #c0392b; }
 
 /* Sidebar overlay for mobile */
 #sidebar-overlay {
@@ -256,11 +258,11 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
 }
 
 /* RESPONSIVE - Mobile */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   body { overflow: hidden !important; height: 100vh !important; }
 
   /* Show mobile menu button */
-  #mobile-menu-btn { display: block !important; }
+  #mobile-menu-btn { display: flex !important; align-items: center !important; justify-content: center !important; }
 
   /* Top bar */
   #topbar {
