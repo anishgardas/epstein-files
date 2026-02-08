@@ -233,32 +233,95 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
 .email-page-btn:hover { border-color: #666; color: #fff; }
 .email-page-btn.active { border-color: #e74c3c; color: #fff; background: rgba(231,76,60,0.2); }
 
+/* Mobile menu button - hidden on desktop */
+#mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+#mobile-menu-btn:hover { border-color: #e74c3c; }
+
+/* Sidebar overlay for mobile */
+#sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 998;
+}
+
 /* RESPONSIVE - Mobile */
 @media screen and (max-width: 768px) {
   body { overflow: hidden !important; height: 100vh !important; }
 
-  /* Top bar - minimal */
+  /* Show mobile menu button */
+  #mobile-menu-btn { display: block !important; }
+
+  /* Top bar */
   #topbar {
     flex-wrap: wrap !important;
     height: auto !important;
-    padding: 6px 8px !important;
-    gap: 4px !important;
+    padding: 8px 10px !important;
+    gap: 6px !important;
   }
-  #topbar h1 { display: none !important; }
+  #topbar h1 { font-size: 12px !important; flex: 1 !important; }
   #search-box { display: none !important; }
-  #view-tabs { gap: 2px !important; }
-  .view-tab { font-size: 9px !important; padding: 4px 8px !important; }
+  #view-tabs {
+    order: 3 !important;
+    width: 100% !important;
+    justify-content: center !important;
+    gap: 3px !important;
+  }
+  .view-tab { font-size: 9px !important; padding: 5px 8px !important; }
   #stats-bar { display: none !important; }
 
   /* Main layout */
   #main {
     flex-direction: column !important;
-    height: calc(100vh - 40px - 50px) !important;
+    height: calc(100vh - 80px - 50px) !important;
   }
 
-  /* Sidebar - HIDDEN on mobile */
+  /* Sidebar - slide out drawer */
   #sidebar {
-    display: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: -280px !important;
+    width: 280px !important;
+    min-width: 280px !important;
+    height: 100vh !important;
+    z-index: 999 !important;
+    transition: left 0.3s ease !important;
+    border-right: 2px solid #e74c3c !important;
+    padding-top: 20px !important;
+  }
+  #sidebar.open {
+    left: 0 !important;
+  }
+  #sidebar-overlay.open {
+    display: block !important;
+  }
+
+  /* Kalnex logo in sidebar */
+  .kalnex-brand {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 16px !important;
+    padding-bottom: 16px !important;
+  }
+  .kalnex-brand img {
+    width: 120px !important;
+    height: auto !important;
+  }
+  .kalnex-brand div {
+    font-size: 11px !important;
+    text-align: center !important;
   }
 
   /* Network container - FULL SCREEN */
@@ -310,7 +373,7 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
   /* Other panels - fullscreen */
   #stats-panel, #query-panel, #map-panel, #docs-panel, #emails-panel {
     position: fixed !important;
-    top: 40px !important;
+    top: 80px !important;
     left: 0 !important;
     right: 0 !important;
     bottom: 50px !important;
@@ -328,8 +391,12 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
 </head>
 <body>
 
+<!-- Sidebar overlay for mobile -->
+<div id="sidebar-overlay" onclick="toggleMobileSidebar()"></div>
+
 <!-- TOP BAR -->
 <div id="topbar">
+  <button id="mobile-menu-btn" onclick="toggleMobileSidebar()">☰</button>
   <h1><span>&#9673;</span> Epstein Network — Spider Web Analysis</h1>
   <div id="search-box">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -2187,6 +2254,14 @@ function filterByGroup(group) {
 // ============================================================
 // KEYBOARD SHORTCUTS (disabled)
 // ============================================================
+
+// ============================================================
+// MOBILE SIDEBAR TOGGLE
+// ============================================================
+function toggleMobileSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebar-overlay').classList.toggle('open');
+}
 
 // ============================================================
 // INIT
