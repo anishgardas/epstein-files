@@ -237,80 +237,72 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
 @media screen and (max-width: 768px) {
   body { overflow-y: auto !important; height: auto !important; }
 
-  /* Top bar - stack vertically */
+  /* Top bar - compact single row */
   #topbar {
-    flex-direction: column !important;
+    flex-wrap: wrap !important;
     height: auto !important;
-    padding: 10px !important;
-    gap: 10px !important;
-    align-items: stretch !important;
+    padding: 8px 10px !important;
+    gap: 6px !important;
   }
-  #topbar h1 { font-size: 14px !important; text-align: center !important; }
-  #search-box { width: 100% !important; }
-  #search-box input { width: 100% !important; }
-  #view-tabs {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 4px !important;
-  }
-  .view-tab { font-size: 10px !important; padding: 6px 10px !important; }
-  #stats-bar {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 10px !important;
-  }
+  #topbar h1 { font-size: 11px !important; white-space: nowrap !important; }
+  #search-box { display: none !important; }
+  #view-tabs { gap: 2px !important; }
+  .view-tab { font-size: 9px !important; padding: 4px 6px !important; }
+  #stats-bar { display: none !important; }
 
   /* Main layout - stack vertically */
   #main {
     flex-direction: column !important;
     height: auto !important;
-    min-height: auto !important;
+    min-height: calc(100vh - 100px) !important;
   }
 
-  /* Sidebar - horizontal on mobile */
+  /* Sidebar - compact at top */
   #sidebar {
     width: 100% !important;
     min-width: 100% !important;
-    max-width: 100% !important;
-    max-height: none !important;
+    max-height: 140px !important;
     border-right: none !important;
     border-bottom: 1px solid #2a2a5a !important;
-    padding: 12px !important;
-    overflow-x: auto !important;
-    overflow-y: visible !important;
+    padding: 8px !important;
+    overflow-y: auto !important;
   }
 
-  /* Kalnex logo */
+  /* Kalnex logo - smaller inline */
   .kalnex-brand {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    text-align: center !important;
-    margin-bottom: 12px !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+    padding-bottom: 8px !important;
   }
   .kalnex-brand img {
-    width: 80px !important;
+    width: 50px !important;
     height: auto !important;
   }
   .kalnex-brand div {
-    font-size: 12px !important;
+    font-size: 9px !important;
+  }
+  .kalnex-brand div strong {
+    font-size: 11px !important;
   }
 
-  /* Filter sections */
-  .sidebar-section { margin-bottom: 12px !important; }
-  .sidebar-section h3 { font-size: 11px !important; }
-  .filter-group { display: flex !important; flex-wrap: wrap !important; gap: 4px !important; }
-  .filter-btn { font-size: 10px !important; padding: 4px 8px !important; }
+  /* Hide some sidebar sections on mobile */
+  .sidebar-section h3 { font-size: 9px !important; margin-bottom: 4px !important; }
+  .filter-group { gap: 3px !important; }
+  .filter-btn { font-size: 8px !important; padding: 2px 5px !important; }
 
-  /* Graph container */
-  #graph-container {
+  /* Network container - FULL HEIGHT */
+  #network-container {
+    flex: 1 !important;
     width: 100% !important;
-    height: 60vh !important;
-    min-height: 350px !important;
+    height: calc(100vh - 240px) !important;
+    min-height: 400px !important;
+  }
+  #network {
+    width: 100% !important;
+    height: 100% !important;
   }
 
   /* Detail panel - slide up from bottom */
@@ -320,7 +312,7 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    max-height: 60vh !important;
+    max-height: 50vh !important;
     border-left: none !important;
     border-top: 2px solid #e74c3c !important;
     z-index: 1000 !important;
@@ -328,39 +320,37 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
   #detail-panel.open {
     width: 100% !important;
     min-width: 100% !important;
-    padding: 16px !important;
+    padding: 12px !important;
   }
 
-  /* Bottom bar */
+  /* Bottom bar - compact */
   #bottombar {
     flex-wrap: wrap !important;
     height: auto !important;
-    padding: 8px !important;
-    gap: 6px !important;
-    justify-content: center !important;
+    padding: 6px 8px !important;
+    gap: 4px !important;
   }
-  #bottombar span { font-size: 10px !important; }
+  #bottombar span { font-size: 8px !important; }
+  #bottombar input[type="range"] { width: 80px !important; }
 
-  /* Stats panel */
-  #stats-panel { padding: 12px !important; }
-
-  /* Map panel */
-  #map-panel { height: 60vh !important; }
-
-  /* Emails panel */
-  #emails-panel { padding: 12px !important; }
-  .email-controls { flex-direction: column !important; }
-  .email-person-pills { max-height: 80px !important; overflow-y: auto !important; }
+  /* Other panels */
+  #stats-panel, #query-panel, #map-panel, #docs-panel, #emails-panel {
+    padding: 10px !important;
+    overflow-y: auto !important;
+  }
 }
 
 /* RESPONSIVE - Small Mobile */
 @media screen and (max-width: 480px) {
-  #topbar h1 { font-size: 12px !important; }
-  .view-tab { font-size: 9px !important; padding: 5px 8px !important; }
-  .kalnex-brand img { width: 60px !important; }
-  .kalnex-brand div { font-size: 10px !important; }
-  .filter-btn { font-size: 9px !important; }
-  #graph-container { height: 50vh !important; min-height: 280px !important; }
+  #topbar h1 { font-size: 10px !important; }
+  #topbar h1 span { display: none !important; }
+  .view-tab { font-size: 8px !important; padding: 3px 5px !important; }
+  .kalnex-brand img { width: 40px !important; }
+  .kalnex-brand div { font-size: 8px !important; }
+  .kalnex-brand div strong { font-size: 10px !important; }
+  #sidebar { max-height: 120px !important; }
+  .filter-btn { font-size: 7px !important; padding: 2px 4px !important; }
+  #network-container { min-height: 350px !important; }
 }
 
 /* SCROLLBAR */
