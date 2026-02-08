@@ -278,7 +278,13 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
     gap: 4px !important;
   }
   #topbar h1 { font-size: 11px !important; flex: 1 !important; }
-  #search-box { display: none !important; }
+  #search-box {
+    display: flex !important;
+    order: 4 !important;
+    width: 100% !important;
+    margin-top: 4px !important;
+  }
+  #search-box input { width: 100% !important; font-size: 12px !important; }
   #view-tabs {
     order: 3 !important;
     width: 100% !important;
@@ -291,7 +297,7 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
   /* Main layout - full screen */
   #main {
     flex-direction: column !important;
-    height: calc(100vh - 70px) !important;
+    height: calc(100vh - 100px) !important;
     width: 100% !important;
   }
 
