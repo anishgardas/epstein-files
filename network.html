@@ -259,33 +259,40 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
 
 /* RESPONSIVE - Mobile */
 @media screen and (max-width: 900px) {
-  body { overflow: hidden !important; height: 100vh !important; }
+  html, body {
+    overflow: hidden !important;
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 
   /* Show mobile menu button */
   #mobile-menu-btn { display: flex !important; align-items: center !important; justify-content: center !important; }
 
-  /* Top bar */
+  /* Top bar - minimal */
   #topbar {
     flex-wrap: wrap !important;
     height: auto !important;
-    padding: 8px 10px !important;
-    gap: 6px !important;
+    padding: 6px 8px !important;
+    gap: 4px !important;
   }
-  #topbar h1 { font-size: 12px !important; flex: 1 !important; }
+  #topbar h1 { font-size: 11px !important; flex: 1 !important; }
   #search-box { display: none !important; }
   #view-tabs {
     order: 3 !important;
     width: 100% !important;
     justify-content: center !important;
-    gap: 3px !important;
+    gap: 2px !important;
   }
-  .view-tab { font-size: 9px !important; padding: 5px 8px !important; }
+  .view-tab { font-size: 8px !important; padding: 4px 6px !important; }
   #stats-bar { display: none !important; }
 
-  /* Main layout */
+  /* Main layout - full screen */
   #main {
     flex-direction: column !important;
-    height: calc(100vh - 80px - 50px) !important;
+    height: calc(100vh - 70px) !important;
+    width: 100% !important;
   }
 
   /* Sidebar - slide out drawer */
@@ -329,10 +336,15 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
   /* Network container - FULL SCREEN */
   #network-container {
     flex: 1 !important;
+    width: 100vw !important;
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+  #network {
     width: 100% !important;
     height: 100% !important;
   }
-  #network {
+  #network canvas {
     width: 100% !important;
     height: 100% !important;
   }
@@ -369,22 +381,10 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
     margin-bottom: 10px !important;
   }
 
-  /* Bottom bar - compact */
+  /* Bottom bar - HIDE on mobile */
   #bottombar {
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    flex-wrap: wrap !important;
-    height: auto !important;
-    padding: 6px 8px !important;
-    gap: 4px !important;
-    background: #0d0d20 !important;
-    border-top: 1px solid #2a2a5a !important;
-    z-index: 500 !important;
+    display: none !important;
   }
-  #bottombar span { font-size: 8px !important; }
-  #bottombar input[type="range"] { width: 60px !important; }
 
   /* Other panels - fullscreen */
   #stats-panel, #query-panel, #map-panel, #docs-panel, #emails-panel {
