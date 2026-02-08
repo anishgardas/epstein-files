@@ -808,6 +808,17 @@ const rawNodes = [
   {id:"mick_jagger",label:"Mick Jagger",group:"celebrity",w:15,desc:"Rolling Stones frontman. Named in black book.",emails:0,imsg:0,source:"black_book",loc:"London",era:["pre_conviction"]},
   {id:"diana_ross",label:"Diana Ross",group:"celebrity",w:15,desc:"Singer. Named in Lolita Express flight logs.",emails:0,imsg:0,source:"flight_logs",loc:"NYC",era:["pre_conviction"]},
   {id:"michael_jackson",label:"Michael Jackson",group:"celebrity",w:10,desc:"Singer (deceased). Multiple phone numbers in black book.",emails:0,imsg:0,source:"black_book",loc:"Los Angeles",era:["pre_conviction"]},
+  // === NEW NODES FROM BLACK BOOK / FINANCIAL DATA ===
+  {id:"henry_kissinger",label:"Henry Kissinger",group:"political",w:25,desc:"Former Secretary of State. Contact in black book.",emails:0,imsg:0,source:"black_book",loc:"Washington DC",era:["pre_conviction"]},
+  {id:"sergey_brin",label:"Sergey Brin",group:"tech",w:30,desc:"Google co-founder. 2003 emails planning meetings with Epstein and Maxwell.",emails:0,imsg:0,source:"black_book",loc:"California",era:["pre_conviction"]},
+  {id:"howard_lutnick",label:"Howard Lutnick",group:"financial",w:35,desc:"Cantor Fitzgerald CEO. 2012 Caribbean island visit, Adfin joint investment.",emails:0,imsg:0,source:"court_docs",loc:"NYC",era:["rebuilding"]},
+  {id:"mort_zuckerman",label:"Mort Zuckerman",group:"financial",w:30,desc:"Real estate/media billionaire. $45M payments to Epstein, Radar Magazine investment partner.",emails:0,imsg:0,source:"court_docs",loc:"NYC",era:["pre_conviction","post_plea"]},
+  {id:"david_blaine",label:"David Blaine",group:"celebrity",w:20,desc:"Magician. Flew on Epstein's plane Sep 2012. Contact in black book.",emails:0,imsg:0,source:"flight_logs",loc:"NYC",era:["rebuilding"]},
+  {id:"boris_nikolic",label:"Boris Nikolic",group:"tech",w:25,desc:"Biomedicine investor. Former Bill Gates science advisor. Named as backup executor in Epstein's will.",emails:0,imsg:0,source:"flight_logs",loc:"Seattle",era:["rebuilding"]},
+  {id:"alec_baldwin",label:"Alec Baldwin",group:"celebrity",w:15,desc:"Actor. Contact information in black book.",emails:0,imsg:0,source:"black_book",loc:"NYC",era:["pre_conviction"]},
+  {id:"ariane_de_rothschild",label:"Ariane de Rothschild",group:"financial",w:30,desc:"Banking heiress. $25M agreement with Epstein's Southern Trust Company (Oct 2015).",emails:0,imsg:0,source:"court_docs",loc:"Paris",era:["rebuilding"]},
+  {id:"peter_thiel",label:"Peter Thiel",group:"tech",w:35,desc:"PayPal co-founder. Epstein invested $40M in Valar Ventures (now worth ~$170M).",emails:0,imsg:0,source:"court_docs",loc:"California",era:["rebuilding"]},
+  {id:"karim_wade",label:"Karim Wade",group:"political",w:15,desc:"Former Senegalese minister. Flew with Epstein May 2011.",emails:0,imsg:0,source:"flight_logs",loc:"Senegal",era:["rebuilding"]},
 ];
 
 // EDGE DATA — 108 edges
@@ -945,6 +956,25 @@ const rawEdges = [
   {s:"jeffrey_epstein",t:"barnaby_marsh",w:20,tip:"FLIGHT CONFIRMED: Apr 1 2016. Doc: HOUSE_OVERSIGHT_002139. Epstein science program associate.",src:"flight_logs"},
   {s:"martin_nowak",t:"bob_berwick",w:20,tip:"Same flight Sep 4 2015 with Epstein and Andy Knoll. Doc: HOUSE_OVERSIGHT_001880.",src:"flight_logs"},
   {s:"bob_berwick",t:"noam_chomsky",w:15,tip:"MIT colleagues. Berwick co-authored 'Why Only Us' with Chomsky. Both connected to Epstein.",src:"public_records"},
+
+  // === FINANCIAL CONNECTIONS (Feb 2026 Data) ===
+  {s:"les_wexner",t:"jeffrey_epstein",w:80,tip:"FINANCIAL: $277M total — $77M NYC mansion gift + $200M in fees. Power of attorney over Wexner assets 1990s-2007.",src:"court_docs"},
+  {s:"leon_black",t:"jeffrey_epstein",w:70,tip:"FINANCIAL: $158-170M for tax/estate planning 2012-2017. Senate investigation found $12M previously unreported.",src:"court_docs"},
+  {s:"ariane_de_rothschild",t:"jeffrey_epstein",w:40,tip:"FINANCIAL: $25M agreement for risk analysis services (Oct 5, 2015). Edmond de Rothschild Holding.",src:"court_docs"},
+  {s:"mort_zuckerman",t:"jeffrey_epstein",w:35,tip:"FINANCIAL: $45M combined payments. 2003 NY Magazine acquisition attempt. 2004 Radar Magazine ($25M investment).",src:"court_docs"},
+  {s:"glenn_dubin",t:"jeffrey_epstein",w:30,tip:"FINANCIAL: $15M from Dubin hedge fund to Epstein. Epstein also invested in Dubin's fund.",src:"court_docs"},
+  {s:"peter_thiel",t:"jeffrey_epstein",w:40,tip:"FINANCIAL: Epstein invested $40M in Valar Ventures (2015-2016). Now worth ~$170M. Largest Epstein estate asset.",src:"court_docs"},
+  {s:"howard_lutnick",t:"jeffrey_epstein",w:30,tip:"FINANCIAL: Joint investment in Adfin (Dec 2012). Upper East Side neighbors 13+ years. Caribbean island visit 2012.",src:"court_docs"},
+
+  // === NEW FLIGHT CONNECTIONS (81 flights scraped Feb 2026) ===
+  {s:"jeffrey_epstein",t:"ehud_barak",w:50,tip:"FLIGHT CONFIRMED: PBI→Tampa, Jan 26 2014, N212JE. With Mrs Barak & Steve Hansen. Doc: HOUSE_OVERSIGHT_008272.",src:"flight_logs"},
+  {s:"jeffrey_epstein",t:"david_blaine",w:25,tip:"FLIGHT CONFIRMED: Ontario→TEB, Sep 19 2012, N909JE. Doc: HOUSE_OVERSIGHT_006313. Magician flew with Epstein.",src:"flight_logs"},
+  {s:"jeffrey_epstein",t:"marvin_minsky",w:35,tip:"FLIGHT CONFIRMED: STT→TEB, Dec 11 2011, N909JE. With Martin Nowak. Doc: HOUSE_OVERSIGHT_006351. MIT AI pioneer (deceased).",src:"flight_logs"},
+  {s:"jeffrey_epstein",t:"boris_nikolic",w:30,tip:"FLIGHT CONFIRMED: TEB flight, Oct 26 2012, N650CB. Doc: HOUSE_OVERSIGHT_006949. Named backup executor in Epstein's will.",src:"flight_logs"},
+  {s:"jeffrey_epstein",t:"karim_wade",w:20,tip:"FLIGHT CONFIRMED: May 16 2011, N909JE. With Rasseck Bourgi. Doc: HOUSE_OVERSIGHT_006379. Former Senegalese minister.",src:"flight_logs"},
+  {s:"marvin_minsky",t:"martin_nowak",w:25,tip:"Same flight STT→TEB, Dec 11 2011. Both scientists flew with Epstein. Doc: HOUSE_OVERSIGHT_006351.",src:"flight_logs"},
+  {s:"bill_gates",t:"boris_nikolic",w:30,tip:"Nikolic was Gates' science advisor. Both connected to Epstein. Nikolic named backup executor in will.",src:"public_records"},
+  {s:"jeffrey_epstein",t:"greg_wyler",w:20,tip:"FLIGHT CONFIRMED: TEB→STT, Apr 8 2014, N212JE. Doc: HOUSE_OVERSIGHT_008295. Satellite entrepreneur.",src:"flight_logs"},
 ];
 
 
@@ -2059,6 +2089,12 @@ const airports = {
   PBI: {name:'Palm Beach International',city:'West Palm Beach, FL',lat:26.6832,lng:-80.0956},
   MIA: {name:'Miami International',city:'Miami, FL',lat:25.7959,lng:-80.2870},
   FLL: {name:'Fort Lauderdale-Hollywood',city:'Fort Lauderdale, FL',lat:26.0726,lng:-80.1527},
+  TPA: {name:'Tampa International',city:'Tampa, FL',lat:27.9756,lng:-82.5333},
+  // California
+  ONT: {name:'Ontario International',city:'Ontario, CA',lat:34.0560,lng:-117.6012},
+  VNY: {name:'Van Nuys Airport',city:'Los Angeles, CA',lat:34.2098,lng:-118.4897},
+  SFO: {name:'San Francisco International',city:'San Francisco, CA',lat:37.6213,lng:-122.3790},
+  OAK: {name:'Oakland International',city:'Oakland, CA',lat:37.7126,lng:-122.2197},
   // New England
   BOS: {name:'Boston Logan International',city:'Boston, MA',lat:42.3656,lng:-71.0096},
   BED: {name:'Hanscom Field',city:'Bedford, MA',lat:42.4700,lng:-71.2890},
@@ -2101,6 +2137,16 @@ const confirmedFlights = [
   {date:'Aug 3, 2016',from:'TEB',to:'STT',aircraft:'N908JE',duration:'3h 25m',passengers:['Jeffrey Epstein','Igor Zinoviev'],crew:null,doc:'HOUSE_OVERSIGHT_008088',color:'#f39c12'},
   {date:'Nov 26, 2017',from:'TEB',to:'PBI',aircraft:'N120JE',duration:'2h 30m',passengers:['Jeffrey Epstein','Ramon Ocejo Alonso'],crew:null,doc:'HOUSE_OVERSIGHT_004421',color:'#f39c12'},
   // Frequent route patterns (aggregated)
+  // Additional scraped flights (Feb 2026)
+  {date:'Jan 26, 2014',from:'PBI',to:'TPA',aircraft:'N212JE',duration:'49m',passengers:['Jeffrey Epstein','Ehud Barak','Mrs. Barak','Steve Hansen'],crew:null,doc:'HOUSE_OVERSIGHT_008272',color:'#3498db',note:'Former Israeli PM to Tampa'},
+  {date:'Sep 19, 2012',from:'ONT',to:'TEB',aircraft:'N909JE',duration:'4h 53m',passengers:['Jeffrey Epstein','David Blaine'],crew:'Larry Visoski, David Rodgers',doc:'HOUSE_OVERSIGHT_006313',color:'#9b59b6',note:'Magician David Blaine'},
+  {date:'Dec 11, 2011',from:'STT',to:'TEB',aircraft:'N909JE',duration:'3h 30m',passengers:['Jeffrey Epstein','Marvin Minsky','Martin Nowak'],crew:null,doc:'HOUSE_OVERSIGHT_006351',color:'#9b59b6',note:'MIT AI pioneer + Harvard mathematician'},
+  {date:'Oct 26, 2012',from:'TEB',to:'BED',aircraft:'N650CB',duration:'54m',passengers:['Jeffrey Epstein','Boris Nikolic'],crew:null,doc:'HOUSE_OVERSIGHT_006949',color:'#9b59b6',note:'Gates science advisor, named in will'},
+  {date:'May 16, 2011',from:'TEB',to:'STT',aircraft:'N909JE',duration:'3h 30m',passengers:['Jeffrey Epstein','Karim Wade','Rasseck Bourgi'],crew:null,doc:'HOUSE_OVERSIGHT_006379',color:'#f39c12',note:'Senegalese minister'},
+  {date:'Mar 17, 2012',from:'JFK',to:'LFPB',aircraft:'N908JE',duration:'7h 6m',passengers:['Jeffrey Epstein','Woody Allen','Soon Yi Previn'],crew:'Larry Visoski, David Rodgers',doc:'HOUSE_OVERSIGHT_008094',color:'#f39c12',note:'NYC to Paris'},
+  {date:'Aug 24, 2014',from:'TEB',to:'LHR',aircraft:'N212JE',duration:'6h 47m',passengers:['Woody Allen','Soon Yi Previn'],crew:null,doc:'HOUSE_OVERSIGHT_001354',color:'#f39c12',note:'NYC to London on Epstein plane'},
+  {date:'Nov 28, 2014',from:'PBI',to:'STT',aircraft:'N908JE',duration:'2h 30m',passengers:['Jeffrey Epstein','Joi Ito','Reid Hoffman'],crew:'LV DR',doc:'HOUSE_OVERSIGHT_008114',color:'#e74c3c',note:'Tech investors to Virgin Islands'},
+  // Aggregate frequent routes
   {date:'2000-2019',from:'TEB',to:'STT',aircraft:'Various',duration:'~3h 30m',passengers:['Multiple flights to Virgin Islands'],crew:null,doc:'Flight logs',color:'#2ecc71',isAggregate:true,count:247},
   {date:'2000-2019',from:'STT',to:'TEB',aircraft:'Various',duration:'~3h 30m',passengers:['Return flights from Virgin Islands'],crew:null,doc:'Flight logs',color:'#2ecc71',isAggregate:true,count:243},
   {date:'2000-2019',from:'TEB',to:'PBI',aircraft:'Various',duration:'~2h 30m',passengers:['Flights to Palm Beach estate'],crew:null,doc:'Flight logs',color:'#2ecc71',isAggregate:true,count:189},
