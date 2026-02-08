@@ -811,6 +811,7 @@ const rawNodes = [
   {id:"david_blaine",label:"David Blaine",group:"celebrity",w:20,desc:"Magician.",emails:0,imsg:0,source:"flight_logs",loc:"NYC",era:["rebuilding"]},
   {id:"peter_thiel",label:"Peter Thiel",group:"tech",w:35,desc:"PayPal founder.",emails:0,imsg:0,source:"court_docs",loc:"CA",era:["rebuilding"]},
   {id:"boris_nikolic",label:"Boris Nikolic",group:"tech",w:25,desc:"Former Gates advisor.",emails:0,imsg:0,source:"court_docs",loc:"Seattle",era:["rebuilding"]},
+  {id:"howard_lutnick",label:"Howard Lutnick",group:"financial",w:35,desc:"Cantor Fitzgerald CEO.",emails:0,imsg:0,source:"court_docs",loc:"NYC",era:["rebuilding"]},
 ];
 
 // EDGE DATA — 108 edges
@@ -951,6 +952,7 @@ const rawEdges = [
   {s:"jeffrey_epstein",t:"david_blaine",w:25,tip:"Flight Sep 2012",src:"flight_logs"},
   {s:"peter_thiel",t:"jeffrey_epstein",w:40,tip:"$40M investment",src:"court_docs"},
   {s:"bill_gates",t:"boris_nikolic",w:30,tip:"Nikolic was Gates advisor",src:"public_records"},
+  {s:"howard_lutnick",t:"jeffrey_epstein",w:30,tip:"Adfin joint investment",src:"court_docs"},
 ];
 
 
