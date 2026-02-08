@@ -15,6 +15,10 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
 #topbar { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; background: linear-gradient(135deg, #12122a, #1a1a3e); border-bottom: 1px solid #2a2a5a; height: 48px; z-index: 10; }
 #topbar h1 { font-size: 15px; color: #fff; font-weight: 600; white-space: nowrap; }
 #topbar h1 span { color: #e74c3c; }
+.kalnex-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; margin-left: 16px; padding-left: 16px; border-left: 1px solid #2a2a5a; }
+.kalnex-brand img { height: 28px; border-radius: 4px; }
+.kalnex-brand-text { font-size: 10px; color: #666; }
+.kalnex-brand-text strong { color: #e74c3c; font-size: 12px; display: block; }
 #search-box { display: flex; align-items: center; gap: 6px; background: #1a1a3e; border: 1px solid #3a3a6a; border-radius: 6px; padding: 4px 10px; }
 #search-box input { background: transparent; border: none; color: #fff; font-size: 13px; width: 200px; outline: none; }
 #search-box input::placeholder { color: #666; }
@@ -246,6 +250,10 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
 <!-- TOP BAR -->
 <div id="topbar">
   <h1><span>&#9673;</span> Epstein Network — Spider Web Analysis</h1>
+  <a href="https://www.kalnex.in" target="_blank" class="kalnex-brand">
+    <img src="kalnex.in.jpeg" alt="Kalnex">
+    <div class="kalnex-brand-text">Developed by<strong>KALNEX</strong></div>
+  </a>
   <div id="search-box">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
     <input type="text" id="search" placeholder="Search people & evidence..." autocomplete="off">
