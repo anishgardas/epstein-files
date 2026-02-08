@@ -78,6 +78,36 @@ body { overflow: hidden; height: 100vh; font-family: 'Segoe UI', -apple-system, 
   border-color: #e74c3c; color: #fff;
 }
 
+/* MOBILE RESPONSIVE */
+@media screen and (max-width: 768px) {
+  #redirect-banner {
+    flex-wrap: wrap;
+    padding: 10px 12px;
+    gap: 8px;
+    justify-content: center;
+  }
+  .banner-logo { font-size: 14px; }
+  .banner-message { display: none; }
+  .banner-countdown { gap: 6px; }
+  .countdown-number { font-size: 18px; padding: 3px 10px; min-width: 40px; }
+  .countdown-label { font-size: 9px; }
+  .banner-bar { width: 80px; height: 4px; }
+  .banner-target { font-size: 10px; }
+  .banner-skip { padding: 5px 10px; font-size: 10px; }
+}
+
+@media screen and (max-width: 480px) {
+  #redirect-banner {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+  .banner-logo { font-size: 12px; letter-spacing: 1px; }
+  .countdown-number { font-size: 16px; padding: 2px 8px; }
+  .banner-bar { width: 60px; }
+  .banner-target { display: none; }
+  .banner-skip { padding: 4px 8px; font-size: 9px; }
+}
+
 /* Loading state before iframe loads */
 #loading {
   position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
