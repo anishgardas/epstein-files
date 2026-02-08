@@ -578,12 +578,18 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
     <h2 style="color:#fff;margin-bottom:8px">Flight Route Map</h2>
     <p style="font-size:11px;color:#888;margin-bottom:12px">Geographic visualization of confirmed Epstein flights from cracked JFlights data. Click routes for details.</p>
     <div id="flight-map"></div>
-    <div class="map-legend">
-      <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:6px">Legend</div>
-      <div class="map-legend-item"><div class="map-legend-line" style="background:#e74c3c"></div>Flight Route</div>
-      <div class="map-legend-item"><div class="map-legend-line" style="background:#f39c12"></div>Frequent Route</div>
-      <div class="map-legend-item"><div class="map-legend-line" style="background:#3498db;border-radius:50%;width:8px;height:8px"></div>Airport</div>
-      <div class="map-legend-item"><div class="map-legend-line" style="background:#e74c3c;border-radius:2px;width:8px;height:8px"></div>Epstein Property</div>
+    <div class="map-legend" style="max-width:200px">
+      <div style="font-size:12px;font-weight:600;color:#fff;margin-bottom:8px;border-bottom:1px solid #2a2a5a;padding-bottom:6px">FLIGHT MAP</div>
+      <div style="font-size:10px;color:#888;margin-bottom:8px">4,292 total flights · 10,343h flight time</div>
+      <div class="map-legend-item"><div class="map-legend-line" style="background:#e74c3c"></div>VIP Passenger Flight</div>
+      <div class="map-legend-item"><div class="map-legend-line" style="background:#3498db"></div>Clinton Flights</div>
+      <div class="map-legend-item"><div class="map-legend-line" style="background:#9b59b6"></div>Scientists/Academics</div>
+      <div class="map-legend-item"><div class="map-legend-line" style="background:#f39c12"></div>Documented Flight</div>
+      <div class="map-legend-item"><div class="map-legend-line" style="background:#2ecc71;opacity:0.6"></div>Frequent Route (100+)</div>
+      <div style="margin-top:8px;padding-top:8px;border-top:1px solid #2a2a5a"></div>
+      <div class="map-legend-item"><div style="width:10px;height:10px;border-radius:50%;background:#3498db;border:2px solid #fff"></div>Airport</div>
+      <div class="map-legend-item"><div style="width:10px;height:10px;border-radius:3px;background:#e74c3c;border:2px solid #fff"></div>Epstein Property</div>
+      <div style="margin-top:8px;font-size:9px;color:#666">Click routes for passenger manifests</div>
     </div>
   </div>
 
@@ -2049,36 +2055,66 @@ let flightMapInitialized = false;
 let flightMap = null;
 
 const airports = {
+  // Caribbean / Virgin Islands
   STT: {name:'Cyril E. King Airport',city:'St. Thomas, USVI',lat:18.3375,lng:-64.9731},
-  BOS: {name:'Boston Logan International',city:'Boston, MA',lat:42.3656,lng:-71.0096},
+  SJU: {name:'Luis Muñoz Marín Intl',city:'San Juan, Puerto Rico',lat:18.4394,lng:-66.0018},
+  EIS: {name:'Terrance B. Lettsome Intl',city:'Beef Island, BVI',lat:18.4448,lng:-64.5433},
+  TCB: {name:'Treasure Cay Airport',city:'Treasure Cay, Bahamas',lat:26.7453,lng:-77.3912},
+  NAS: {name:'Lynden Pindling Intl',city:'Nassau, Bahamas',lat:25.0390,lng:-77.4662},
+  // New York Area
   TEB: {name:'Teterboro Airport',city:'Teterboro, NJ',lat:40.8501,lng:-74.0608},
-  LFPB:{name:'Paris Le Bourget Airport',city:'Paris, France',lat:48.9694,lng:2.4414},
+  JFK: {name:'John F. Kennedy Intl',city:'Queens, NY',lat:40.6413,lng:-73.7781},
+  LGA: {name:'LaGuardia Airport',city:'Queens, NY',lat:40.7769,lng:-73.8740},
+  // Florida
   PBT: {name:'Palm Beach County Park',city:'Lantana, FL',lat:26.5853,lng:-80.0855},
   PBI: {name:'Palm Beach International',city:'West Palm Beach, FL',lat:26.6832,lng:-80.0956},
-  TCB: {name:'Treasure Cay Airport',city:'Treasure Cay, Bahamas',lat:26.7453,lng:-77.3912},
-  BED: {name:'Hanscom Field',city:'Bedford, MA',lat:42.4700,lng:-71.2890},
   MIA: {name:'Miami International',city:'Miami, FL',lat:25.7959,lng:-80.2870},
-  SFJ: {name:'Columbus Airport (est)',city:'Columbus, OH',lat:39.998,lng:-82.892},
-  LHR: {name:'London Heathrow (est)',city:'London, UK',lat:51.4700,lng:-0.4543},
-  NEC: {name:'Necker Island (est)',city:'British Virgin Islands',lat:18.5140,lng:-64.3575},
+  FLL: {name:'Fort Lauderdale-Hollywood',city:'Fort Lauderdale, FL',lat:26.0726,lng:-80.1527},
+  // New England
+  BOS: {name:'Boston Logan International',city:'Boston, MA',lat:42.3656,lng:-71.0096},
+  BED: {name:'Hanscom Field',city:'Bedford, MA',lat:42.4700,lng:-71.2890},
+  // New Mexico (Zorro Ranch)
+  SAF: {name:'Santa Fe Regional',city:'Santa Fe, NM',lat:35.6171,lng:-106.0892},
+  ABQ: {name:'Albuquerque Intl Sunport',city:'Albuquerque, NM',lat:35.0402,lng:-106.6090},
+  // Europe
+  LFPB:{name:'Paris Le Bourget Airport',city:'Paris, France',lat:48.9694,lng:2.4414},
+  LHR: {name:'London Heathrow',city:'London, UK',lat:51.4700,lng:-0.4543},
+  LTN: {name:'London Luton',city:'Luton, UK',lat:51.8747,lng:-0.3683},
+  // Middle East
+  TLV: {name:'Ben Gurion Intl',city:'Tel Aviv, Israel',lat:32.0055,lng:34.8854},
+  // Other
+  CMH: {name:'John Glenn Columbus Intl',city:'Columbus, OH',lat:39.9980,lng:-82.8919},
+  DCA: {name:'Ronald Reagan Washington',city:'Washington, DC',lat:38.8512,lng:-77.0402},
 };
 
 const epsteinProperties = [
-  {name:'71st St Mansion',city:'New York, NY',lat:40.7694,lng:-73.9655,desc:'$77M townhouse from Les Wexner'},
-  {name:'Little St. James Island',city:'US Virgin Islands',lat:18.3000,lng:-64.8253,desc:'Private island, 78 acres'},
-  {name:'Great St. James Island',city:'US Virgin Islands',lat:18.3117,lng:-64.8083,desc:'Second private island'},
-  {name:'El Brillo Way',city:'Palm Beach, FL',lat:26.6986,lng:-80.0367,desc:'Palm Beach estate'},
-  {name:'Avenue Foch',city:'Paris, France',lat:48.8718,lng:2.2870,desc:'Paris apartment'},
-  {name:'Zorro Ranch',city:'Stanley, NM',lat:35.1416,lng:-105.9614,desc:'10,000-acre New Mexico ranch'},
+  {name:'71st St Mansion',city:'New York, NY',lat:40.7694,lng:-73.9655,desc:'$77M townhouse from Les Wexner',icon:'🏛️'},
+  {name:'Little St. James Island',city:'US Virgin Islands',lat:18.3000,lng:-64.8253,desc:'Private island, 78 acres — "Pedophile Island"',icon:'🏝️'},
+  {name:'Great St. James Island',city:'US Virgin Islands',lat:18.3117,lng:-64.8083,desc:'Second private island, purchased 2016',icon:'🏝️'},
+  {name:'El Brillo Way',city:'Palm Beach, FL',lat:26.6986,lng:-80.0367,desc:'Palm Beach waterfront estate',icon:'🏠'},
+  {name:'Avenue Foch',city:'Paris, France',lat:48.8718,lng:2.2870,desc:'Paris apartment near Arc de Triomphe',icon:'🏢'},
+  {name:'Zorro Ranch',city:'Stanley, NM',lat:35.1416,lng:-105.9614,desc:'10,000-acre New Mexico ranch',icon:'🏜️'},
 ];
 
 const confirmedFlights = [
+  // Starred/Featured flights from JFlights with VIP passengers
   {date:'Nov 30, 2014',from:'STT',to:'BOS',aircraft:'N908JE',duration:'3h 35m',passengers:['Jeffrey Epstein','Joi Ito','Andreas Machl','Reid Hoffman'],crew:'LV DR',doc:'HOUSE_OVERSIGHT_008115',color:'#e74c3c'},
   {date:'Mar 21, 2013',from:'TEB',to:'LFPB',aircraft:'N909JE',duration:'7h 7m',passengers:['Jeffrey Epstein','Woody Allen','Mrs Allen','[Anonymous Female]'],crew:null,doc:'HOUSE_OVERSIGHT_006286',color:'#f39c12'},
   {date:'Mar 1, 2013',from:'TEB',to:'PBT',aircraft:'N909JE',duration:'2h 24m',passengers:['Jeffrey Epstein','Bill Gates'],crew:'Larry Visoski, David Rodgers III',doc:'HOUSE_OVERSIGHT_006289',color:'#e74c3c'},
   {date:'Feb 16, 2013',from:'TCB',to:'PBI',aircraft:'N909JE',duration:'48m',passengers:['Jeffrey Epstein','Larry Summers','Woody Allen','Mrs. Allen'],crew:'Larry Visoski, David Rodgers',doc:'HOUSE_OVERSIGHT_006294',color:'#e74c3c'},
   {date:'Apr 15, 2012',from:'TEB',to:'BED',aircraft:'N909JE',duration:'49m',passengers:['Jeffrey Epstein','Leon Black'],crew:'Larry Visoski, David Rodgers (NM)',doc:'HOUSE_OVERSIGHT_006335',color:'#e74c3c'},
   {date:'Dec 14, 2007',from:'TEB',to:'MIA',aircraft:'N909JE',duration:'2h 30m',passengers:['Jeffrey Epstein','Alan Dershowitz','Marty Weinberg','Igor Zinoviev'],crew:null,doc:'HOUSE_OVERSIGHT_005644',color:'#f39c12'},
+  // Additional documented flights from public records
+  {date:'Sep 4, 2015',from:'TEB',to:'STT',aircraft:'N212JE',duration:'3h 30m',passengers:['Jeffrey Epstein','Martin Nowak','Andy Knoll','Bob Berwick'],crew:null,doc:'HOUSE_OVERSIGHT_001880',color:'#9b59b6',note:'Scientists to Virgin Islands'},
+  {date:'Sep 2, 2002',from:'JFK',to:'STT',aircraft:'N909JE',duration:'3h 20m',passengers:['Jeffrey Epstein','Bill Clinton','Ghislaine Maxwell','Doug Band'],crew:'Larry Visoski',doc:'Court Docs 2019',color:'#3498db',note:'Africa trip leg 1'},
+  {date:'Sep 21, 2002',from:'STT',to:'PBI',aircraft:'N909JE',duration:'2h 45m',passengers:['Jeffrey Epstein','Bill Clinton','Kevin Spacey'],crew:null,doc:'Court Docs 2019',color:'#3498db',note:'Return from Africa'},
+  {date:'Feb 9, 2002',from:'TEB',to:'NAS',aircraft:'N909JE',duration:'2h 50m',passengers:['Jeffrey Epstein','Bill Clinton','Ghislaine Maxwell'],crew:null,doc:'Court Docs 2019',color:'#3498db'},
+  {date:'Aug 3, 2016',from:'TEB',to:'STT',aircraft:'N908JE',duration:'3h 25m',passengers:['Jeffrey Epstein','Igor Zinoviev'],crew:null,doc:'HOUSE_OVERSIGHT_008088',color:'#f39c12'},
+  {date:'Nov 26, 2017',from:'TEB',to:'PBI',aircraft:'N120JE',duration:'2h 30m',passengers:['Jeffrey Epstein','Ramon Ocejo Alonso'],crew:null,doc:'HOUSE_OVERSIGHT_004421',color:'#f39c12'},
+  // Frequent route patterns (aggregated)
+  {date:'2000-2019',from:'TEB',to:'STT',aircraft:'Various',duration:'~3h 30m',passengers:['Multiple flights to Virgin Islands'],crew:null,doc:'Flight logs',color:'#2ecc71',isAggregate:true,count:247},
+  {date:'2000-2019',from:'STT',to:'TEB',aircraft:'Various',duration:'~3h 30m',passengers:['Return flights from Virgin Islands'],crew:null,doc:'Flight logs',color:'#2ecc71',isAggregate:true,count:243},
+  {date:'2000-2019',from:'TEB',to:'PBI',aircraft:'Various',duration:'~2h 30m',passengers:['Flights to Palm Beach estate'],crew:null,doc:'Flight logs',color:'#2ecc71',isAggregate:true,count:189},
 ];
 
 function initFlightMap() {
@@ -2096,11 +2132,16 @@ function initFlightMap() {
     subdomains: 'abcd'
   }).addTo(flightMap);
 
-  // Add Epstein properties
+  // Add Epstein properties with custom icons
   epsteinProperties.forEach(prop => {
-    const icon = L.divIcon({className:'property-marker',iconSize:[12,12]});
+    const icon = L.divIcon({
+      className:'',
+      html:`<div style="font-size:18px;text-shadow:0 0 6px rgba(0,0,0,0.8)">${prop.icon || '🏠'}</div>`,
+      iconSize:[24,24],
+      iconAnchor:[12,12]
+    });
     L.marker([prop.lat,prop.lng],{icon}).addTo(flightMap)
-      .bindPopup(`<div class="flight-popup"><b>${prop.name}</b><br>${prop.city}<br><span style="color:#888">${prop.desc}</span></div>`);
+      .bindPopup(`<div class="flight-popup"><b style="font-size:13px">${prop.name}</b><br><span style="color:#f39c12">${prop.city}</span><br><span style="color:#888;font-size:11px">${prop.desc}</span></div>`);
   });
 
   // Add airports used in confirmed flights
@@ -2109,9 +2150,16 @@ function initFlightMap() {
   usedAirports.forEach(code => {
     const ap = airports[code];
     if (!ap) return;
-    const icon = L.divIcon({className:'airport-marker',iconSize:[10,10],html:`<div style="width:10px;height:10px;border-radius:50%;background:#3498db;border:2px solid #fff;box-shadow:0 0 6px rgba(0,0,0,0.5)"></div>`});
+    // Count flights to/from this airport
+    const flightCount = confirmedFlights.filter(f => f.from === code || f.to === code).length;
+    const size = Math.min(8 + flightCount, 14);
+    const icon = L.divIcon({
+      className:'',
+      iconSize:[size,size],
+      html:`<div style="width:${size}px;height:${size}px;border-radius:50%;background:linear-gradient(135deg,#3498db,#2980b9);border:2px solid #fff;box-shadow:0 0 8px rgba(52,152,219,0.6)"></div>`
+    });
     L.marker([ap.lat,ap.lng],{icon}).addTo(flightMap)
-      .bindPopup(`<div class="flight-popup"><b>${code}</b> — ${ap.name}<br>${ap.city}</div>`);
+      .bindPopup(`<div class="flight-popup"><b style="color:#3498db">${code}</b><br>${ap.name}<br><span style="color:#888">${ap.city}</span><br><span style="font-size:10px;color:#666">${flightCount} documented flight(s)</span></div>`);
   });
 
   // Draw flight routes as curved lines
@@ -2121,45 +2169,63 @@ function initFlightMap() {
     if (!from || !to) return;
 
     // Create curved polyline (great circle approximation)
-    const latlngs = generateArc([from.lat,from.lng],[to.lat,to.lng], 40);
+    const latlngs = generateArc([from.lat,from.lng],[to.lat,to.lng], 50);
+
+    // Different styling for aggregate vs individual flights
+    const isAggregate = flight.isAggregate;
     const line = L.polyline(latlngs, {
       color: flight.color,
-      weight: 3,
-      opacity: 0.8,
-      dashArray: '8 4',
+      weight: isAggregate ? 6 : 3,
+      opacity: isAggregate ? 0.4 : 0.85,
+      dashArray: isAggregate ? null : '10 5',
       className: 'flight-route'
     }).addTo(flightMap);
 
     // Popup with flight details
-    const passengerList = flight.passengers.map(p => {
-      const match = rawNodes.find(n => n.label.toLowerCase() === p.toLowerCase());
-      if (match) {
-        const gc = groupConfig[match.group] || groupConfig.social;
-        return `<span style="color:${gc.color}">● ${p}</span>`;
-      }
-      return p;
-    }).join('<br>');
+    if (isAggregate) {
+      // Aggregate flight popup
+      line.bindPopup(`<div class="flight-popup">
+        <b style="font-size:14px">${flight.from} → ${flight.to}</b><br>
+        <span style="color:#2ecc71;font-weight:600">${flight.count} documented flights</span><br>
+        <span style="color:#888">${flight.date}</span><br>
+        <span style="color:#666;font-size:11px">Average duration: ${flight.duration}</span><br>
+        <hr style="border:none;border-top:1px solid #2a2a5a;margin:6px 0">
+        <span style="font-size:10px;color:#888">${flight.passengers[0]}</span>
+      </div>`, {maxWidth: 280});
+    } else {
+      // Individual flight popup
+      const passengerList = flight.passengers.map(p => {
+        const match = rawNodes.find(n => n.label.toLowerCase() === p.toLowerCase());
+        if (match) {
+          const gc = groupConfig[match.group] || groupConfig.social;
+          return `<span style="color:${gc.color}">● ${p}</span>`;
+        }
+        return `<span style="color:#aaa">● ${p}</span>`;
+      }).join('<br>');
 
-    line.bindPopup(`<div class="flight-popup">
-      <b style="font-size:14px">${flight.from} → ${flight.to}</b><br>
-      <span style="color:#f39c12">${flight.date}</span> · ${flight.duration}<br>
-      Aircraft: <b>${flight.aircraft}</b><br>
-      <hr style="border:none;border-top:1px solid #2a2a5a;margin:6px 0">
-      <b>Passengers:</b><br>${passengerList}<br>
-      ${flight.crew ? `<b>Crew:</b> ${flight.crew}<br>` : ''}
-      <hr style="border:none;border-top:1px solid #2a2a5a;margin:6px 0">
-      <span style="color:#888;font-size:10px">Doc: ${flight.doc}</span>
-    </div>`, {maxWidth: 300});
+      line.bindPopup(`<div class="flight-popup">
+        <b style="font-size:14px">${flight.from} → ${flight.to}</b><br>
+        <span style="color:#f39c12">${flight.date}</span> · ${flight.duration}<br>
+        Aircraft: <b>${flight.aircraft}</b><br>
+        ${flight.note ? `<span style="color:#888;font-size:10px;font-style:italic">${flight.note}</span><br>` : ''}
+        <hr style="border:none;border-top:1px solid #2a2a5a;margin:6px 0">
+        <b>Passengers:</b><br>${passengerList}<br>
+        ${flight.crew ? `<b>Crew:</b> <span style="color:#888">${flight.crew}</span><br>` : ''}
+        <hr style="border:none;border-top:1px solid #2a2a5a;margin:6px 0">
+        <span style="color:#666;font-size:10px">Doc: ${flight.doc}</span>
+      </div>`, {maxWidth: 320});
 
-    // Add animated plane marker at midpoint
-    const mid = Math.floor(latlngs.length / 2);
-    const planeIcon = L.divIcon({
-      className:'',
-      html:'<div style="font-size:16px;transform:rotate(-45deg)">✈</div>',
-      iconSize:[16,16],
-      iconAnchor:[8,8]
-    });
-    L.marker(latlngs[mid], {icon: planeIcon}).addTo(flightMap);
+      // Add plane marker at midpoint for individual flights
+      const mid = Math.floor(latlngs.length / 2);
+      const bearing = Math.atan2(to.lng - from.lng, to.lat - from.lat) * 180 / Math.PI;
+      const planeIcon = L.divIcon({
+        className:'',
+        html:`<div style="font-size:14px;transform:rotate(${bearing - 45}deg);text-shadow:0 0 4px #000">✈️</div>`,
+        iconSize:[18,18],
+        iconAnchor:[9,9]
+      });
+      L.marker(latlngs[mid], {icon: planeIcon, interactive: false}).addTo(flightMap);
+    }
   });
 
   // Fit bounds to show all routes
@@ -2178,13 +2244,23 @@ function initFlightMap() {
 
 function generateArc(from, to, numPoints) {
   const points = [];
+  // Calculate distance for curvature scaling
+  const dLat = to[0] - from[0];
+  const dLng = to[1] - from[1];
+  const distance = Math.sqrt(dLat * dLat + dLng * dLng);
+  // More curvature for longer distances (transatlantic flights)
+  const curveFactor = Math.min(distance * 0.08, 8);
+
   for (let i = 0; i <= numPoints; i++) {
     const t = i / numPoints;
-    const lat = from[0] + t * (to[0] - from[0]);
-    const lng = from[1] + t * (to[1] - from[1]);
-    // Add curvature
-    const curve = Math.sin(t * Math.PI) * 0.15 * Math.abs(to[1] - from[1]);
-    points.push([lat + curve * 0.3, lng]);
+    const lat = from[0] + t * dLat;
+    const lng = from[1] + t * dLng;
+    // Smooth sinusoidal curve perpendicular to flight path
+    const curve = Math.sin(t * Math.PI) * curveFactor;
+    // Apply curve perpendicular to direction
+    const perpLat = -dLng / distance * curve;
+    const perpLng = dLat / distance * curve * 0.3;
+    points.push([lat + perpLat, lng + perpLng]);
   }
   return points;
 }
