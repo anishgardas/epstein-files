@@ -808,6 +808,14 @@ const rawNodes = [
   {id:"mick_jagger",label:"Mick Jagger",group:"celebrity",w:15,desc:"Rolling Stones frontman. Named in black book.",emails:0,imsg:0,source:"black_book",loc:"London",era:["pre_conviction"]},
   {id:"diana_ross",label:"Diana Ross",group:"celebrity",w:15,desc:"Singer. Named in Lolita Express flight logs.",emails:0,imsg:0,source:"flight_logs",loc:"NYC",era:["pre_conviction"]},
   {id:"michael_jackson",label:"Michael Jackson",group:"celebrity",w:10,desc:"Singer (deceased). Multiple phone numbers in black book.",emails:0,imsg:0,source:"black_book",loc:"Los Angeles",era:["pre_conviction"]},
+  // === NEW NODES (Feb 2026 Data) ===
+  {id:"henry_kissinger",label:"Henry Kissinger",group:"political",w:25,desc:"Former Secretary of State. Contact in black book.",emails:0,imsg:0,source:"black_book",loc:"Washington DC",era:["pre_conviction"]},
+  {id:"sergey_brin",label:"Sergey Brin",group:"tech",w:30,desc:"Google co-founder. 2003 emails planning meetings with Epstein.",emails:0,imsg:0,source:"black_book",loc:"California",era:["pre_conviction"]},
+  {id:"howard_lutnick",label:"Howard Lutnick",group:"financial",w:35,desc:"Cantor Fitzgerald CEO. Adfin joint investment with Epstein.",emails:0,imsg:0,source:"court_docs",loc:"NYC",era:["rebuilding"]},
+  {id:"mort_zuckerman",label:"Mort Zuckerman",group:"financial",w:30,desc:"Real estate billionaire. Paid Epstein for financial services.",emails:0,imsg:0,source:"court_docs",loc:"NYC",era:["pre_conviction"]},
+  {id:"david_blaine",label:"David Blaine",group:"celebrity",w:20,desc:"Magician. Flew on Epstein plane Sep 2012.",emails:0,imsg:0,source:"flight_logs",loc:"NYC",era:["rebuilding"]},
+  {id:"boris_nikolic",label:"Boris Nikolic",group:"tech",w:25,desc:"Former Bill Gates science advisor. Named backup executor in will.",emails:0,imsg:0,source:"court_docs",loc:"Seattle",era:["rebuilding"]},
+  {id:"peter_thiel",label:"Peter Thiel",group:"tech",w:35,desc:"PayPal co-founder. Epstein invested $40M in Valar Ventures.",emails:0,imsg:0,source:"court_docs",loc:"California",era:["rebuilding"]},
 ];
 
 // EDGE DATA — 108 edges
@@ -945,6 +953,14 @@ const rawEdges = [
   {s:"jeffrey_epstein",t:"barnaby_marsh",w:20,tip:"FLIGHT CONFIRMED: Apr 1 2016. Doc: HOUSE_OVERSIGHT_002139. Epstein science program associate.",src:"flight_logs"},
   {s:"martin_nowak",t:"bob_berwick",w:20,tip:"Same flight Sep 4 2015 with Epstein and Andy Knoll. Doc: HOUSE_OVERSIGHT_001880.",src:"flight_logs"},
   {s:"bob_berwick",t:"noam_chomsky",w:15,tip:"MIT colleagues. Berwick co-authored 'Why Only Us' with Chomsky. Both connected to Epstein.",src:"public_records"},
+  // === FINANCIAL CONNECTIONS (Feb 2026) ===
+  {s:"les_wexner",t:"jeffrey_epstein",w:80,tip:"FINANCIAL: $277M total - $77M mansion + $200M fees. Power of attorney 1990s-2007.",src:"court_docs"},
+  {s:"leon_black",t:"jeffrey_epstein",w:70,tip:"FINANCIAL: $158-170M for tax planning 2012-2017.",src:"court_docs"},
+  {s:"peter_thiel",t:"jeffrey_epstein",w:40,tip:"FINANCIAL: Epstein invested $40M in Valar Ventures. Now worth $170M.",src:"court_docs"},
+  {s:"howard_lutnick",t:"jeffrey_epstein",w:30,tip:"FINANCIAL: Adfin joint investment Dec 2012. Neighbors 13+ years.",src:"court_docs"},
+  {s:"jeffrey_epstein",t:"david_blaine",w:25,tip:"FLIGHT: Ontario to TEB, Sep 19 2012. Doc: HOUSE_OVERSIGHT_006313.",src:"flight_logs"},
+  {s:"jeffrey_epstein",t:"boris_nikolic",w:30,tip:"Named backup executor in Epstein will. Former Gates science advisor.",src:"court_docs"},
+  {s:"bill_gates",t:"boris_nikolic",w:30,tip:"Nikolic was Gates science advisor. Both connected to Epstein.",src:"public_records"},
 ];
 
 
