@@ -9,7 +9,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; color: #e0e0e0; overflow: hidden; height: 100vh; }
+body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; color: #e0e0e0; overflow-x: hidden; min-height: 100vh; }
 
 /* TOP BAR */
 #topbar { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; background: linear-gradient(135deg, #12122a, #1a1a3e); border-bottom: 1px solid #2a2a5a; height: 48px; z-index: 10; }
@@ -233,46 +233,134 @@ body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #0a0a1a; 
 .email-page-btn:hover { border-color: #666; color: #fff; }
 .email-page-btn.active { border-color: #e74c3c; color: #fff; background: rgba(231,76,60,0.2); }
 
-/* RESPONSIVE - Tablet */
-@media (max-width: 1000px) {
-  #sidebar { width: 180px; min-width: 180px; }
-  #detail-panel.open { width: 240px; min-width: 240px; }
-  .kalnex-brand img { width: 140px !important; }
-}
-
 /* RESPONSIVE - Mobile */
-@media (max-width: 768px) {
-  #topbar { flex-wrap: wrap; height: auto; padding: 8px 12px; gap: 8px; }
-  #topbar h1 { font-size: 12px; order: 1; }
-  #search-box { order: 3; width: 100%; }
-  #search-box input { width: 100%; }
-  #view-tabs { order: 2; flex-wrap: wrap; }
-  .view-tab { font-size: 9px; padding: 4px 6px; }
-  #stats-bar { order: 4; width: 100%; justify-content: center; flex-wrap: wrap; gap: 8px; }
-  #main { flex-direction: column; height: auto; min-height: calc(100vh - 120px); }
-  #sidebar { width: 100%; min-width: 100%; max-height: 200px; overflow-y: auto; border-right: none; border-bottom: 1px solid #2a2a5a; }
-  .kalnex-brand { display: flex !important; flex-direction: row !important; align-items: center !important; gap: 12px !important; padding-bottom: 12px !important; }
-  .kalnex-brand img { width: 60px !important; height: auto !important; }
-  .kalnex-brand div { font-size: 10px !important; }
-  .sidebar-section { display: inline-block; margin-right: 12px; margin-bottom: 8px; }
-  .sidebar-section h3 { font-size: 10px; margin-bottom: 4px; }
-  .filter-btn { font-size: 9px; padding: 3px 6px; }
-  #graph-container { height: 50vh; min-height: 300px; }
-  #detail-panel.open { width: 100%; min-width: 100%; position: fixed; bottom: 0; left: 0; right: 0; height: 50vh; max-height: 50vh; border-left: none; border-top: 1px solid #2a2a5a; z-index: 100; }
-  #compare-panel.open { width: 100%; }
-  #bottombar { flex-wrap: wrap; height: auto; padding: 6px 12px; gap: 4px; }
-  #bottombar span { font-size: 9px; }
+@media screen and (max-width: 768px) {
+  body { overflow-y: auto !important; height: auto !important; }
+
+  /* Top bar - stack vertically */
+  #topbar {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 10px !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+  }
+  #topbar h1 { font-size: 14px !important; text-align: center !important; }
+  #search-box { width: 100% !important; }
+  #search-box input { width: 100% !important; }
+  #view-tabs {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 4px !important;
+  }
+  .view-tab { font-size: 10px !important; padding: 6px 10px !important; }
+  #stats-bar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+
+  /* Main layout - stack vertically */
+  #main {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  /* Sidebar - horizontal on mobile */
+  #sidebar {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    border-right: none !important;
+    border-bottom: 1px solid #2a2a5a !important;
+    padding: 12px !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+  }
+
+  /* Kalnex logo */
+  .kalnex-brand {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    text-align: center !important;
+    margin-bottom: 12px !important;
+  }
+  .kalnex-brand img {
+    width: 80px !important;
+    height: auto !important;
+  }
+  .kalnex-brand div {
+    font-size: 12px !important;
+  }
+
+  /* Filter sections */
+  .sidebar-section { margin-bottom: 12px !important; }
+  .sidebar-section h3 { font-size: 11px !important; }
+  .filter-group { display: flex !important; flex-wrap: wrap !important; gap: 4px !important; }
+  .filter-btn { font-size: 10px !important; padding: 4px 8px !important; }
+
+  /* Graph container */
+  #graph-container {
+    width: 100% !important;
+    height: 60vh !important;
+    min-height: 350px !important;
+  }
+
+  /* Detail panel - slide up from bottom */
+  #detail-panel {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-height: 60vh !important;
+    border-left: none !important;
+    border-top: 2px solid #e74c3c !important;
+    z-index: 1000 !important;
+  }
+  #detail-panel.open {
+    width: 100% !important;
+    min-width: 100% !important;
+    padding: 16px !important;
+  }
+
+  /* Bottom bar */
+  #bottombar {
+    flex-wrap: wrap !important;
+    height: auto !important;
+    padding: 8px !important;
+    gap: 6px !important;
+    justify-content: center !important;
+  }
+  #bottombar span { font-size: 10px !important; }
+
+  /* Stats panel */
+  #stats-panel { padding: 12px !important; }
+
+  /* Map panel */
+  #map-panel { height: 60vh !important; }
+
+  /* Emails panel */
+  #emails-panel { padding: 12px !important; }
+  .email-controls { flex-direction: column !important; }
+  .email-person-pills { max-height: 80px !important; overflow-y: auto !important; }
 }
 
 /* RESPONSIVE - Small Mobile */
-@media (max-width: 480px) {
-  #topbar h1 { font-size: 10px; }
-  #topbar h1 span { display: none; }
-  .view-tab { font-size: 8px; padding: 3px 5px; }
-  .kalnex-brand img { width: 50px !important; }
-  #sidebar { max-height: 150px; padding: 8px; }
-  .sidebar-section h3 { font-size: 9px; }
-  .filter-btn { font-size: 8px; padding: 2px 5px; }
+@media screen and (max-width: 480px) {
+  #topbar h1 { font-size: 12px !important; }
+  .view-tab { font-size: 9px !important; padding: 5px 8px !important; }
+  .kalnex-brand img { width: 60px !important; }
+  .kalnex-brand div { font-size: 10px !important; }
+  .filter-btn { font-size: 9px !important; }
+  #graph-container { height: 50vh !important; min-height: 280px !important; }
 }
 
 /* SCROLLBAR */
