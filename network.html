@@ -1212,13 +1212,8 @@ document.getElementById('toggle-financial').addEventListener('change', function(
 });
 
 // ============================================================
-// KEYBOARD SHORTCUTS
+// KEYBOARD SHORTCUTS (disabled)
 // ============================================================
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') { detailPanel.classList.remove('open'); searchInput.value = ''; applyFilters(); }
-  if (e.key === '/' && document.activeElement !== searchInput) { e.preventDefault(); searchInput.focus(); }
-  if (e.key === 'f' && document.activeElement !== searchInput) { network.fit({ animation: true }); }
-});
 
 // ============================================================
 // EDGE TYPE FILTER
@@ -2109,36 +2104,8 @@ function filterByGroup(group) {
 }
 
 // ============================================================
-// KEYBOARD SHORTCUTS (enhanced)
+// KEYBOARD SHORTCUTS (disabled)
 // ============================================================
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    detailPanel.classList.remove('open');
-    document.getElementById('compare-panel').classList.remove('open');
-    searchInput.value = '';
-    pathSelection = [];
-    document.getElementById('path-result').innerHTML = '';
-    applyFilters();
-  }
-  if (e.key === '/' && document.activeElement !== searchInput) { e.preventDefault(); searchInput.focus(); }
-  if (e.key === 'f' && document.activeElement !== searchInput) { network.fit({ animation: true }); }
-  if (e.key === 'c' && document.activeElement !== searchInput) {
-    const selected = network.getSelectedNodes();
-    if (selected.length === 1) startCompare(selected[0]);
-  }
-  if (e.key === 'm' && document.activeElement !== searchInput) {
-    document.querySelector('.view-tab[data-view="map"]').click();
-  }
-  if (e.key === 'g' && document.activeElement !== searchInput) {
-    document.querySelector('.view-tab[data-view="graph"]').click();
-  }
-  if (e.key === 'd' && document.activeElement !== searchInput) {
-    document.querySelector('.view-tab[data-view="docs"]').click();
-  }
-  if (e.key === 'e' && document.activeElement !== searchInput) {
-    document.querySelector('.view-tab[data-view="emails"]').click();
-  }
-});
 
 // ============================================================
 // INIT
